@@ -1,1 +1,8 @@
 <h2>Listado de Noticias</h2>
+
+<p *ngIf="cargando">Cargando....</p>
+<ul>
+    <li *ngFor="let elemento of noticias">
+        <a [href]="elemento.url" target="_new">{{elemento.title}}</a>
+    </li>
+</ul>

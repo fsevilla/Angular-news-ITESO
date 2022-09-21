@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { NoticiaService } from 'src/app/shared/services/noticia.service';
+
 @Component({
   selector: 'app-noticias',
   templateUrl: './noticias.component.html',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NoticiasComponent implements OnInit {
 
-  constructor() { }
+  noticias: any  = [];
+  cargando: boolean = false;
+
+  constructor(private servicioDeNoticias: NoticiaService) {}
 
   ngOnInit(): void {
+    this.cargando = true;
+    this.servicioDeNoticias.getNoticias().subscribe({
+      next: (response) => {
+        this.noticias = response.articles;
+        this.cargando = false;
+      },
+      error: (err) => {
+        console.log('Error: ', err);
+      }
+    });
+    
   }
+
 
 }
