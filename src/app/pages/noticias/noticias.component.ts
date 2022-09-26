@@ -12,21 +12,26 @@ export class NoticiasComponent implements OnInit {
   noticias: any  = [];
   cargando: boolean = false;
 
+  zelda: string = 'http://google.com';
+  search: string = '';
+  lastSearch: string = '';
+
   constructor(private servicioDeNoticias: NoticiaService) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  buscar(e?: any): void {
+
     this.cargando = true;
-    this.servicioDeNoticias.getNoticias().subscribe({
+    this.servicioDeNoticias.getNoticias(this.search).subscribe({
       next: (response) => {
+        this.lastSearch = this.search;
         this.noticias = response.articles;
         this.cargando = false;
       },
-      error: (err) => {
-        console.log('Error: ', err);
+      error: (err: any) => {
+        console.log('Ocurrio un error');
       }
     });
-    
   }
-
-
 }
