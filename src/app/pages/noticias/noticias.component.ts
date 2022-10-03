@@ -17,14 +17,14 @@ export class NoticiasComponent implements OnInit {
   lastSearch: string = '';
   current: any = {title:'Ejemplo'};
 
-  constructor(private servicioDeNoticias: NoticiaService) {}
+  constructor(private noticiaService: NoticiaService) {}
 
   ngOnInit(): void {}
 
   buscar(e?: any): void {
 
     this.cargando = true;
-    this.servicioDeNoticias.getNoticias(this.search).subscribe({
+    this.noticiaService.getNoticias(this.search).subscribe({
       next: (response) => {
         this.lastSearch = this.search;
         this.noticias = response.articles;
@@ -37,8 +37,8 @@ export class NoticiasComponent implements OnInit {
   }
 
   selectNoticia(noticia: any) {
-    console.log('hiciste click')
     this.current = noticia;
+    this.noticiaService.setCurrentNoticia(noticia);
   }
 
   clearCurrent() {

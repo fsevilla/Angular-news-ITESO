@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent  } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { NoticiaDetailsPageComponent } from './pages/noticias/noticia-details-page/noticia-details-page.component';
 import { NoticiasComponent } from './pages/noticias/noticias.component';
 
 const routes: Routes = [
@@ -10,7 +11,7 @@ const routes: Routes = [
   { path: 'inicio', component: HomeComponent },
   { path: 'noticias', component: NoticiasComponent },
   { path: 'noticias/nueva', component: HomeComponent},
-  { path: 'noticias/:titulo', component: NoticiasComponent },
+  { path: 'noticias/:titulo', component: NoticiaDetailsPageComponent },
   { path: '**', component: NotFoundComponent }
 ];
 
