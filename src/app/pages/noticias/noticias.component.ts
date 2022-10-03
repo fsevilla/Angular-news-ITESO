@@ -15,6 +15,7 @@ export class NoticiasComponent implements OnInit {
   zelda: string = 'http://google.com';
   search: string = '';
   lastSearch: string = '';
+  current: any = {title:'Ejemplo'};
 
   constructor(private servicioDeNoticias: NoticiaService) {}
 
@@ -33,5 +34,14 @@ export class NoticiasComponent implements OnInit {
         console.log('Ocurrio un error');
       }
     });
+  }
+
+  selectNoticia(noticia: any) {
+    console.log('hiciste click')
+    this.current = noticia;
+  }
+
+  clearCurrent() {
+    this.current = {};
   }
 }
