@@ -7,7 +7,7 @@ import { NoticiaDetailsPageComponent } from './pages/noticias/noticia-details-pa
 import { NoticiasComponent } from './pages/noticias/noticias.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'inicio', pathMatch: 'full' },
+  { path: '', redirectTo: 'noticias', pathMatch: 'full' },
   { path: 'inicio', component: HomeComponent },
   { path: 'noticias', component: NoticiasComponent },
   { path: 'noticias/nueva', component: HomeComponent},
